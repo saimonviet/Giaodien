@@ -31,7 +31,12 @@
             components = new System.ComponentModel.Container();
             tabControl1 = new TabControl();
             tabthanhtoan = new TabPage();
-            dataGridView1 = new DataGridView();
+            listView1 = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
             songayluutru = new TextBox();
             label6 = new Label();
             tbtiendv = new TextBox();
@@ -44,6 +49,7 @@
             Tongtien = new TextBox();
             label7 = new Label();
             panel1 = new Panel();
+            tbsophong = new TextBox();
             Timkiem = new Button();
             label2 = new Label();
             tabcheckout = new TabPage();
@@ -58,10 +64,8 @@
             button1 = new Button();
             dataProviderBindingSource1 = new BindingSource(components);
             dataProviderBindingSource = new BindingSource(components);
-            tbsophong = new TextBox();
             tabControl1.SuspendLayout();
             tabthanhtoan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             tabcheckout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvdanhsachthanhtoan).BeginInit();
@@ -84,7 +88,7 @@
             // tabthanhtoan
             // 
             tabthanhtoan.BackColor = Color.MistyRose;
-            tabthanhtoan.Controls.Add(dataGridView1);
+            tabthanhtoan.Controls.Add(listView1);
             tabthanhtoan.Controls.Add(songayluutru);
             tabthanhtoan.Controls.Add(label6);
             tabthanhtoan.Controls.Add(tbtiendv);
@@ -106,16 +110,46 @@
             tabthanhtoan.Text = "Thanh toán";
             tabthanhtoan.Click += tabthanhtoan_Click;
             // 
-            // dataGridView1
+            // listView1
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(10, 121);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(889, 208);
-            dataGridView1.TabIndex = 8;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
+            listView1.Location = new Point(10, 117);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(889, 203);
+            listView1.TabIndex = 6;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            listView1.Click += listView1_Click;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Mã KH";
+            columnHeader1.Width = 90;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Tên khách hàng";
+            columnHeader2.TextAlign = HorizontalAlignment.Center;
+            columnHeader2.Width = 250;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "CCCD";
+            columnHeader3.TextAlign = HorizontalAlignment.Center;
+            columnHeader3.Width = 180;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Ngày đặt ";
+            columnHeader4.TextAlign = HorizontalAlignment.Center;
+            columnHeader4.Width = 180;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Ngày trả";
+            columnHeader5.TextAlign = HorizontalAlignment.Center;
+            columnHeader5.Width = 180;
             // 
             // songayluutru
             // 
@@ -244,6 +278,14 @@
             panel1.Size = new Size(889, 79);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // tbsophong
+            // 
+            tbsophong.Location = new Point(124, 22);
+            tbsophong.Name = "tbsophong";
+            tbsophong.Size = new Size(378, 36);
+            tbsophong.TabIndex = 5;
+            tbsophong.TextChanged += textBox1_TextChanged;
             // 
             // Timkiem
             // 
@@ -390,14 +432,6 @@
             // 
             dataProviderBindingSource.DataSource = typeof(DAO.DataProvider);
             // 
-            // tbsophong
-            // 
-            tbsophong.Location = new Point(124, 22);
-            tbsophong.Name = "tbsophong";
-            tbsophong.Size = new Size(378, 36);
-            tbsophong.TabIndex = 5;
-            tbsophong.TextChanged += textBox1_TextChanged;
-            // 
             // checkout
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -411,7 +445,6 @@
             tabControl1.ResumeLayout(false);
             tabthanhtoan.ResumeLayout(false);
             tabthanhtoan.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabcheckout.ResumeLayout(false);
@@ -451,8 +484,13 @@
         private TextBox songayluutru;
         private Label label6;
         private BindingSource dataProviderBindingSource;
-        private DataGridView dataGridView1;
         private BindingSource dataProviderBindingSource1;
         private TextBox tbsophong;
+        private ListView listView1;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
     }
 }
